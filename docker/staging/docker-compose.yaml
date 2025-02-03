@@ -1,0 +1,33 @@
+version: '3'
+
+networks:
+  base:
+    driver: bridge
+  monitoring:
+    driver: bridge
+  broker:
+    driver: bridge
+services:
+  app-staging:
+    build: .
+    ports:
+      - '3001:3001'
+    depends_on:
+      - db
+    networks:
+      - base
+  db:
+    image: postgres:alpine3.20
+    environment:
+      POSTGRES_USER: postgres # Overriding the default user
+      POSTGRES_PASSWORD: password # Overriding the default password
+      POSTGRES_DB: db_school_adm_sistem_staging # Overriding the default database
+    volumes:
+      - pg_data_school_adm_sistem_staging:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - base
+
+volumes:
+  pg_data_school_adm_sistem_staging:

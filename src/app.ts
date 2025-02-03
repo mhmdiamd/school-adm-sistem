@@ -1,8 +1,10 @@
-import express, { Application } from "express";
-import dotenv from "dotenv";
-import cors from "cors";
-import helmet from "helmet";
-import morgan from "morgan";
+import express, { Application } from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import { errorHandler, notFoundHandler } from './middleware/error.middleware';
+import { RegisterRoutes } from './routes';
 
 dotenv.config();
 
@@ -20,12 +22,17 @@ class App {
     this.app.use(cors());
     this.app.use(helmet());
     this.app.use(express.json());
-    this.app.use(morgan("dev"));
+    this.app.use(morgan('dev'));
   }
 
-  private setupRoutes(): void {}
+  private setupRoutes(): void {
+    RegisterRoutes(this.app);
+  }
 
-  private setupErrorHandling(): void {}
+  private setupErrorHandling(): void {
+    this.app.use(notFoundHandler);
+    this.app.use(errorHandler);
+  }
 
   public getApp(): Application {
     return this.app;

@@ -10,7 +10,7 @@ node_modules/
 *.d.ts
 
 # Logs
-*.log
+logs/
 
 # Environment files
 .env
