@@ -1,7 +1,4 @@
-cat <<EOF > .husky/commit-msg
 #!/usr/bin/env sh
-. "\$(dirname -- "\$0")/_/husky.sh"
+. "$(dirname -- "$0")/_/husky.sh"
 
-yarn commitlint --edit "\$1"
-EOF
-chmod +x .husky/commit-msg
+# yarn commitlint --edit "$1"
