@@ -7,7 +7,12 @@
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "prepare": "husky",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "format": "prettier --write ."
   },
   "husky": {
     "hooks": {
@@ -21,31 +26,39 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.19.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.13.0",
-    "@typescript-eslint/eslint-plugin": "^8.22.0",
-    "@typescript-eslint/parser": "^8.22.0",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
     "cross-env": "^7.0.3",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
+    "prisma": "^6.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@prisma/client": "^6.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
+    "inversify": "^6.2.2",
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.2.2",
     "tsyringe": "^4.8.0",
-    "winston-daily-rotate-file": "^5.0.0"
+    "winston-daily-rotate-file": "^5.0.0",
+    "zod": "^3.24.1"
   }
 }

@@ -11,6 +11,7 @@ export class ErrorHandler {
 
   public sendError(res: Response) {
     res.status(this.statusCode).json({
+      statusCode: this.statusCode,
       message: this.message,
     });
   }

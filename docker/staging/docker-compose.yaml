@@ -8,14 +8,14 @@ networks:
   broker:
     driver: bridge
 services:
-  app-staging:
-    build: .
-    ports:
-      - '3001:3001'
-    depends_on:
-      - db
-    networks:
-      - base
+  # app-staging:
+  #   build: .
+  #   ports:
+  #     - '3001:3001'
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - base
   db:
     image: postgres:alpine3.20
     environment:
