@@ -8,14 +8,14 @@
     "dev": "nodemon",
     "build": "tsc",
     "start": "node dist/index.js",
-    "prepare": "husky",
     "lint:fix": "eslint . --ext .ts --fix",
     "lint": "eslint . --fix",
     "lint:check": "eslint .",
     "format": "prettier --write .",
     "postinstall": "husky",
     "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "postpack": "pinst --enable",
+    "type-check": "tsc --noEmit"
   },
   "husky": {
     "hooks": {
