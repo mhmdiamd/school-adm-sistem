@@ -8,8 +8,8 @@ import unusedImports from 'eslint-plugin-unused-imports';
 const compat = new FlatCompat();
 
 export default [
-  js.configs.recommended, // JavaScript rules
-  ...compat.config(ts.configs.recommended), // TypeScript rules
+  js.configs.recommended,
+  ...compat.config(ts.configs.recommended),
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
@@ -30,19 +30,13 @@ export default [
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
       eqeqeq: ['error', 'always'],
-
       '@typescript-eslint/no-unused-vars': [
         'warn',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-        },
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/consistent-type-imports': 'error',
-
-      // ✅ Automatically remove unused imports
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'warn',
