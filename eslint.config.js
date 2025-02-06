@@ -4,7 +4,7 @@ const tsParser = require('@typescript-eslint/parser');
 const prettier = require('eslint-plugin-prettier');
 const unusedImports = require('eslint-plugin-unused-imports');
 
-const compat = new FlatCompat();
+// const compat = new FlatCompat();
 
 module.exports = [
   js.configs.recommended,
