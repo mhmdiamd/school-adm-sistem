@@ -52,4 +52,13 @@ module.exports = [
       'no-cond-assign': 'off',
     },
   },
+  // Override rules for testing and other configurations
+  {
+    files: ['src/**/*test.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off', // Disable no-unused-vars in test files
+      'unused-imports/no-unused-imports': 'off', // Disable unused-imports for test files
+      'no-console': 'off', // Allow console.log in tests
+    },
+  },
 ];
