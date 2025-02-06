@@ -1,12 +1,11 @@
+import { User } from '@prisma/client';
 import { inject, injectable } from 'inversify';
 import { IAuthService } from '../interfaces/auth.service.interface';
 import { TYPES } from '../../../common/types';
 import { IAuthRepository } from '../interfaces/auth.repository.interface';
-import { User } from '@prisma/client';
 import logger from '../../../common/logger';
 import { registerValidation } from '../validation/auth.validatoin';
 import { ZodError } from 'zod';
-import { createErrorResponse } from '../../../common/response-handler/error-response';
 import { convertErrorValidationToList } from '../../../helpers/converter/convertErrorValidationToList';
 import { ConflictError } from '../../../common/error-handler/conflict-error';
 import { ValidationError } from '../../../common/error-handler/validation-error';
@@ -14,7 +13,7 @@ import { ValidationError } from '../../../common/error-handler/validation-error'
 @injectable()
 export class AuthService implements IAuthService {
   constructor(
-    @inject(TYPES.AuthRepository) private authRepossitory: IAuthRepository,
+    @inject(TYPES.AuthRepository) private authRepository: IAuthRepository,
   ) {}
 
   async register(userDto: User): Promise<User> {
@@ -23,7 +22,7 @@ export class AuthService implements IAuthService {
       const validated = registerValidation.parse(userDto);
 
       // Check is user already exist
-      const findUser = await this.authRepossitory.findByEmail(userDto.email);
+      const findUser = await this.authRepository.findByEmail(userDto.email);
       if (findUser) {
         logger.error(
           `[Service - register] Error : User already exist => ${JSON.stringify(findUser)}`,
@@ -32,7 +31,7 @@ export class AuthService implements IAuthService {
       }
 
       // hit db
-      const newUser = await this.authRepossitory.createUser(validated as User);
+      const newUser = await this.authRepository.createUser(validated as User);
       logger.info(
         `[Service - register] Success create user with this data ${JSON.stringify(newUser)}`,
       );

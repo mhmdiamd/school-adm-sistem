@@ -12,6 +12,8 @@ module.exports = [
       parser: tsParser,
       parserOptions: {
         project: './tsconfig.json',
+        ecmaVersion: 2020,
+        sourceType: 'module',
       },
     },
     plugins: {
@@ -20,24 +22,34 @@ module.exports = [
       'unused-imports': unusedImports,
     },
     rules: {
-      'prettier/prettier': 'error',
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'no-debugger': 'warn',
-      semi: ['error', 'always'],
-      quotes: ['error', 'single'],
-      eqeqeq: ['error', 'always'],
+      'prettier/prettier': 'error', // Enforce Prettier formatting
+      'no-console': ['warn', { allow: ['warn', 'error'] }], // Allow console.warn and console.error
+      'no-debugger': 'warn', // Warn about debugger statements
+      semi: ['error', 'always'], // Enforce semicolons
+      quotes: ['error', 'single'], // Enforce single quotes for strings
+      eqeqeq: ['error', 'always'], // Enforce strict equality
       '@typescript-eslint/no-unused-vars': [
         'warn',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }, // Ignore DI-prefixed variables
       ],
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/consistent-type-imports': 'error',
-      'unused-imports/no-unused-imports': 'error',
+      '@typescript-eslint/explicit-module-boundary-types': 'off', // Disable explicit return types for functions
+      '@typescript-eslint/no-explicit-any': 'warn', // Warn about the usage of 'any'
+      '@typescript-eslint/consistent-type-imports': 'error', // Enforce consistent type imports
+      'unused-imports/no-unused-imports': 'error', // Remove unused imports automatically
       'unused-imports/no-unused-vars': [
         'warn',
         { vars: 'all', args: 'after-used', argsIgnorePattern: '^_' },
       ],
+      'no-undef': 'off', // TypeScript already handles undefined vars
+      'no-unused-vars': 'off', // Disabled as it's covered by TypeScript's rule
+    },
+  },
+  {
+    ignores: ['dist'],
+    rules: {
+      'no-unused-vars': 'off',
+      'no-undef': 'off',
+      'no-cond-assign': 'off',
     },
   },
 ];

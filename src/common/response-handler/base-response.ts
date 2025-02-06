@@ -1,4 +1,4 @@
-import { BaseResponse } from './response-interface';
+import type { BaseResponse } from './response-interface';
 
 export class ResponseHandler {
   static createTimestamp(): string {

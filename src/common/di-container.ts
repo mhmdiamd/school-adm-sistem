@@ -1,8 +1,8 @@
 import { Container } from 'inversify';
 import { TYPES } from './types';
-import { IAuthRepository } from '../modules/auth/interfaces/auth.repository.interface';
+import type { IAuthRepository } from '../modules/auth/interfaces/auth.repository.interface';
 import { AuthRepository } from '../modules/auth/repositories/auth.repository';
-import { IAuthService } from '../modules/auth/interfaces/auth.service.interface';
+import type { IAuthService } from '../modules/auth/interfaces/auth.service.interface';
 import { AuthService } from '../modules/auth/services/auth.service';
 import { AuthController } from '../modules/auth/controllers/auth.controller';
 
