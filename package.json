@@ -12,7 +12,10 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "lint": "eslint . --fix",
     "lint:check": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "postinstall": "husky",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "husky": {
     "hooks": {
