@@ -1,12 +1,12 @@
-import js from '@eslint/js';
-import ts from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import prettier from 'eslint-plugin-prettier';
-import unusedImports from 'eslint-plugin-unused-imports';
+const js = require('@eslint/js');
+const ts = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
+const prettier = require('eslint-plugin-prettier');
+const unusedImports = require('eslint-plugin-unused-imports');
 
 const compat = new FlatCompat();
 
-export default [
+module.exports = [
   js.configs.recommended,
   ts.configs.recommended,
   {
