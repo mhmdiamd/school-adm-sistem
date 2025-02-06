@@ -1,4 +1,3 @@
-const { FlatCompat } = await import('@eslint/eslintrc');
 import js from '@eslint/js';
 import ts from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
@@ -9,7 +8,7 @@ const compat = new FlatCompat();
 
 export default [
   js.configs.recommended,
-  ...compat.config(ts.configs.recommended),
+  ts.configs.recommended,
   {
     files: ['src/**/*.ts'],
     languageOptions: {
