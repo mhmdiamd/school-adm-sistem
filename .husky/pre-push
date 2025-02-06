@@ -1,0 +1,43 @@
+echo "✅ Running Pre-push Checks..."
+
+# Type Checking
+echo "📝 Running TypeScript type check..."
+yarn type-check
+if [ $? -ne 0 ]; then
+  echo "❌ Type errors detected. Push aborted!"
+  exit 1
+fi
+
+# Linting
+echo "🔍 Linting code..."
+yarn lint
+if [ $? -ne 0 ]; then
+  echo "❌ Linting errors detected. Push aborted!"
+  exit 1
+fi
+
+# Prettier Check
+echo "🎨 Checking code formatting..."
+yarn format:check
+if [ $? -ne 0 ]; then
+  echo "❌ Formatting issues detected. Run 'yarn format' to fix. Push aborted!"
+  exit 1
+fi
+
+# Running Tests
+# echo "🧪 Running tests..."
+# yarn test
+# if [ $? -ne 0 ]; then
+#   echo "❌ Tests failed. Push aborted!"
+#   exit 1
+# fi
+
+# Security Audit
+echo "🔒 Running security audit..."
+yarn audit --groups dependencies
+if [ $? -ne 0 ]; then
+  echo "❌ Security vulnerabilities found. Push aborted!"
+  exit 1
+fi
+
+echo "🚀 All checks passed. Proceeding with push..."
