@@ -9,7 +9,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "lint:fix": "eslint . --ext .ts --fix",
-    "lint": "eslint . --fix",
+    "lint": "eslint . --fix --config eslint.config.mjs",
     "lint:check": "eslint .",
     "format": "prettier --write .",
     "postinstall": "husky",
